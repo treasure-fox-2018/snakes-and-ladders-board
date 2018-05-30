@@ -9,30 +9,28 @@ function reverseArr(arr) {
 function generateBoard(num) {
   // your code here
   let x = 1
-  let arrX = []
-  let newArrX = []
+  let mainBoard = []
   for (let a = 0; a < num; a++) {
-    arrX.push([])
+    let fillerBoard = []
+    mainBoard.push(fillerBoard)
     for (let b = 0; b < num; b++) {
-      arrX[a].push(x)
+      mainBoard[a].push(x)
       x++
     }
   }
-  for (let c = arrX.length-1; c >= 0; c--) {
-    newArrX.push(arrX[c])
-  }
-  for (let d = 0; d < newArrX.length; d++) {
+  mainBoard = reverseArr(mainBoard)
+  for (let d = 0; d < mainBoard.length; d++) {
     if (num % 2 === 0) {
       if (d % 2 === 0) {
-        newArrX[d] = reverseArr(newArrX[d])
+        mainBoard[d] = reverseArr(mainBoard[d])
       }
     } else {
       if (d % 2 !== 0) {
-        newArrX[d] = reverseArr(newArrX[d])
+        mainBoard[d] = reverseArr(mainBoard[d])
       }
     }
   }
-  return newArrX
+  return mainBoard
 }
 
 console.log(generateBoard(8))
